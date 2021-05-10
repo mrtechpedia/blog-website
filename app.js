@@ -1,5 +1,5 @@
 //jshint esversion:6
-
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -14,13 +14,10 @@ const contactContent = "You can contact via our email: mrtechpedia@gmail.com";
 
 const app = express();
 
-mongoose.connect(
-  "mongodb+srv://admin-devanshu:Test123@cluster0.sy9pc.mongodb.net/blogDB",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const postSchema = {
   title: String,
